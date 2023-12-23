@@ -1,0 +1,43 @@
+{
+   "$id": "https://localhost:8080/article.schema.json",
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "title": "Article",
+   "description": "An article in the wiki",
+   "type": "object",
+   "properties": {
+      "title": {
+         "description": "The title of the article"
+      },
+      "shortDescription": {
+         "description": "A short descriptionof the article to be displayed in tooltips",
+         "type": "string"
+      },
+      "linkWords": {
+         "description": "A list of phrases that should link to this article",
+         "type": "array",
+         "items": {
+            "type": "string"
+         },
+         "minItems": 1,
+         "uniqueItems": true
+      },
+      "tags": {
+         "description": "A list of category tags for this article",
+         "type": "array",
+         "items": {
+            "type": "string"
+         },
+         "uniqueItems": true
+      },
+      "content": {
+         "description": "Content of the article",
+         "type": "array",
+         "items": {
+            "$ref": "https://localhost:8080/section.schema.json"
+         },
+         "minItems": 1,
+         "uniqueItems": true
+      }
+   },
+   "required": [ "title", "linkWords", "tags", "content" ]
+}

@@ -1,0 +1,56 @@
+{
+   "$id": "https://localhost:8080/section.schema.json",
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "title": "Section",
+   "description": "A section of an article",
+   "type": "object",
+   "properties": {
+      "type": {
+         "enum": ["sidebar", "text", "image"]
+      }
+   },
+   "required": ["type"],
+   "oneOf": [
+      {
+         "description": "A sidebar section",
+         "properties": {
+            "type": {
+               "const": "sidebar"
+            },
+            "content": {
+               "description": "Sidebar content",
+               "type": "array",
+               "items": {
+                  "type": "string"
+               },
+               "minItems": 1,
+               "uniqueItems": true
+            }
+         }
+      },
+      {
+         "description": "A text section",
+         "properties": {
+            "type": {
+               "const": "text"
+            },
+            "content": {
+               "description": "Text content",
+               "type": "string"
+            }
+         }
+      },
+      {
+         "description": "An image section",
+         "properties": {
+            "type": {
+               "const": "text"
+            },
+            "content": {
+               "description": "image url",
+               "type": "string"
+            }
+         }
+      }
+   ]
+}
