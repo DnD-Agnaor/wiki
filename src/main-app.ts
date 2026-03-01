@@ -1,4 +1,4 @@
-import { LitElement, html, type PropertyValues } from 'lit';
+import { LitElement, html, type PropertyValues, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { Router } from '@vaadin/router';
 
@@ -12,12 +12,12 @@ export class MainApp extends LitElement {
 
     const router = new Router(this.shadowRoot?.querySelector('#outlet'))
     router.setRoutes([
-      {path: '/home', component: 'home-landing'},
-      {path: '(.*)', redirect: '/home'}
+      {path: '/', component: 'home-landing'},
+      {path: '(.*)', redirect: '/'}
     ]);
   }
 
-  render() {
+  protected render(): TemplateResult {
     return html`
       <main>
         <div id='outlet'></div>
