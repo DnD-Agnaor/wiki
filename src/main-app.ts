@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators.js';
 import { Router } from '@vaadin/router';
 
 import './pages/home-landing';
+import './pages/not-found';
 
 @customElement('main-app')
 export class MainApp extends LitElement {
@@ -13,7 +14,7 @@ export class MainApp extends LitElement {
     const router = new Router(this.shadowRoot?.querySelector('#outlet'))
     router.setRoutes([
       {path: '/', component: 'home-landing'},
-      {path: '(.*)', redirect: '/'}
+      {path: '(.*)', component: 'not-found'}
     ]);
   }
 
